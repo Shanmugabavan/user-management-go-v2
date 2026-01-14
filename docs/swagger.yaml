@@ -1,0 +1,267 @@
+basePath: /
+definitions:
+  create.UserRequest:
+    properties:
+      age:
+        type: integer
+      email:
+        type: string
+      firstName:
+        maxLength: 50
+        minLength: 2
+        type: string
+      lastName:
+        maxLength: 50
+        minLength: 2
+        type: string
+      phone:
+        type: string
+      status:
+        allOf:
+        - $ref: '#/definitions/domain.UserStatus'
+        enum:
+        - 0
+        - 1
+    required:
+    - age
+    - email
+    - firstName
+    - lastName
+    - phone
+    type: object
+  create.UserResponse:
+    properties:
+      email:
+        type: string
+      status:
+        format: int32
+        type: integer
+      userID:
+        type: string
+    type: object
+  domain.User:
+    properties:
+      age:
+        type: integer
+      email:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      phone:
+        type: string
+      status:
+        $ref: '#/definitions/domain.UserStatus'
+      userId:
+        type: string
+    type: object
+  domain.UserStatus:
+    enum:
+    - 0
+    - 1
+    - 2
+    type: integer
+    x-enum-varnames:
+    - UserStatusDefault
+    - UserStatusActive
+    - UserStatusInactive
+  responses.Response:
+    properties:
+      errors:
+        type: string
+      message:
+        type: string
+    type: object
+  update.UserRequest:
+    properties:
+      age:
+        maximum: 150
+        minimum: 0
+        type: integer
+      email:
+        type: string
+      firstName:
+        maxLength: 50
+        minLength: 2
+        type: string
+      lastName:
+        maxLength: 50
+        minLength: 2
+        type: string
+      phone:
+        type: string
+      status:
+        type: integer
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: support@example.com
+    name: API Support
+  description: REST API for user management
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: http://swagger.io/terms/
+  title: User Management API
+  version: "1.0"
+paths:
+  /users:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve all users
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of users
+          schema:
+            items:
+              $ref: '#/definitions/domain.User'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.Response'
+      summary: Get all users
+      tags:
+      - Users
+    post:
+      consumes:
+      - application/json
+      description: Create a new user
+      parameters:
+      - description: User data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/create.UserRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.User'
+        "400":
+          description: Validation failed
+          schema:
+            $ref: '#/definitions/responses.Response'
+        "404":
+          description: User not found
+          schema:
+            $ref: '#/definitions/responses.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.Response'
+      summary: Create user
+      tags:
+      - Users
+  /users/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a user by ID
+      parameters:
+      - description: User ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: User deleted successfully
+          schema:
+            type: string
+        "400":
+          description: Invalid user ID
+          schema:
+            $ref: '#/definitions/responses.Response'
+        "404":
+          description: User not found
+          schema:
+            $ref: '#/definitions/responses.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/responses.Response'
+      summary: Delete user
+      tags:
+      - Users
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a single user by UUID
+      parameters:
+      - description: User ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: User found
+          schema:
+            $ref: '#/definitions/domain.User'
+        "400":
+          description: Invalid user ID
+          schema:
+            $ref: '#/definitions/responses.Response'
+        "404":
+          description: User not found
+          schema:
+            $ref: '#/definitions/responses.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/responses.Response'
+      summary: Get user by ID
+      tags:
+      - Users
+    put:
+      consumes:
+      - application/json
+      description: Update an existing user by ID
+      parameters:
+      - description: User ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Update user payload
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/update.UserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: User updated successfully
+          schema:
+            $ref: '#/definitions/create.UserResponse'
+        "400":
+          description: Invalid request / Validation failed
+          schema:
+            $ref: '#/definitions/responses.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/responses.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/responses.Response'
+      summary: Update user
+      tags:
+      - Users
+swagger: "2.0"
