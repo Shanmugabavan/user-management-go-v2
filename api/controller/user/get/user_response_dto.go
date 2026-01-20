@@ -1,4 +1,4 @@
-package get
+package dto
 
 import (
 	"github.com/google/uuid"
@@ -6,7 +6,7 @@ import (
 	"user-management/enum/user"
 )
 
-type UserResponseDto struct {
+type GetUserResponseDto struct {
 	UserId    uuid.UUID       `json:"userId" validate:"required"`
 	FirstName string          `json:"firstName" validate:"required,min=2,max=50"`
 	LastName  string          `json:"lastName" validate:"required,min=2,max=50"`

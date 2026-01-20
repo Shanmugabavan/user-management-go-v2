@@ -7,7 +7,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
 
-	"user-management/api/controller/user/create"
+	dtos "user-management/api/controller/user/create"
 	"user-management/api/controller/user/update"
 	"user-management/api/responses"
 	"user-management/bootstrap"
@@ -34,14 +34,14 @@ func NewUserController(ur domain.UserRepository, env *bootstrap.Env) *UserContro
 // @Tags Users
 // @Accept json
 // @Produce json
-// @Param user body create.UserRequest true "User data"
+// @Param user body create.CreateUserRequest true "User data"
 // @Success 201 {object} domain.User
 // @Failure 400 {object} responses.Response "Validation failed"
 // @Failure 404 {object} responses.Response "User not found"
 // @Failure 500 {object} responses.Response "Internal Server Error"
 // @Router /users [post]
 func (u *UserController) CreateUser(w http.ResponseWriter, r *http.Request) {
-	var createUserRequest create.UserRequest
+	var createUserRequest dtos.CreateUserRequest
 
 	_ = json.NewDecoder(r.Body).Decode(&createUserRequest)
 
@@ -74,7 +74,7 @@ func (u *UserController) CreateUser(w http.ResponseWriter, r *http.Request) {
 
 	createdUser, err2 := u.Create(r.Context(), &user)
 
-	createUserResponse := create.UserResponse{
+	createUserResponse := dtos.CreateUserResponse{
 		UserID: createdUser.UserID,
 		Email:  createdUser.Email,
 		Status: createdUser.Status,
@@ -204,7 +204,7 @@ func (u *UserController) GetUserById(w http.ResponseWriter, r *http.Request) {
 // @Produce json
 // @Param id path string true "User ID (UUID)"
 // @Param user body update.UserRequest true "Update user payload"
-// @Success 200 {object} create.UserResponse "User updated successfully"
+// @Success 200 {object} create.CreateUserResponse "User updated successfully"
 // @Failure 400 {object} responses.Response "Invalid request / Validation failed"
 // @Failure 404 {object} responses.Response
 // @Failure 500 {object} responses.Response "Internal server error"
@@ -265,7 +265,7 @@ func (u *UserController) UpdateUser(w http.ResponseWriter, r *http.Request) {
 
 	updatedUser, err2 := u.Update(r.Context(), userID, &user)
 
-	createUserResponse := create.UserResponse{
+	createUserResponse := dtos.CreateUserResponse{
 		UserID: updatedUser.UserID,
 		Email:  updatedUser.Email,
 		Status: updatedUser.Status,

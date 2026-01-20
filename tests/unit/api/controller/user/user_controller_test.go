@@ -13,7 +13,7 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	"user-management/api/controller/user"
-	"user-management/api/controller/user/create"
+	dtos "user-management/api/controller/user/create"
 	"user-management/api/controller/user/update"
 	"user-management/api/responses"
 	"user-management/domain"
@@ -58,7 +58,7 @@ func TestCreateUserWithValidData(t *testing.T) {
 		UserRepository: &mockRepo{},
 	}
 
-	createRequest := create.UserRequest{
+	createRequest := dtos.CreateUserRequest{
 		Email:     "s@gmail.com",
 		Phone:     "+94776463619",
 		Age:       2,
@@ -77,7 +77,7 @@ func TestCreateUserWithValidData(t *testing.T) {
 	rr := httptest.NewRecorder()
 	mockUserController.CreateUser(rr, request)
 
-	var resp create.UserResponse
+	var resp dtos.CreateUserResponse
 	err := json.Unmarshal(rr.Body.Bytes(), &resp)
 	assert.NoError(t, err)
 	assert.Equal(t, createRequest.Email, resp.Email)
@@ -90,7 +90,7 @@ func TestCreateUserWithInValidJsonData(t *testing.T) {
 		UserRepository: &mockRepo{},
 	}
 
-	createRequest := create.UserRequest{
+	createRequest := dtos.CreateUserRequest{
 		Email: "invalidEmail",
 	}
 

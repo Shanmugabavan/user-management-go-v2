@@ -5,15 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc2805f5-af17-459b-b904-e363cd5b5c2b" name="Changes" comment="gci lint fix">
-      <change beforePath="$PROJECT_DIR$/.golangci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.golangci.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controller/user/create/user_request.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/controller/user/create/user_request.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controller/user/create/user_response.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/controller/user/create/user_response.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controller/user/get/user_response_dto.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/controller/user/get/user_response_dto.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/controller/user/user_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/controller/user/user_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/route/route.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/route/route.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/database.go" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/database.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/env.go" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/env.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repository/user_repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/repository/user_repository.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/integration/setup-database.go" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/setup-database.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/unit/api/controller/user/user_controller_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/api/controller/user/user_controller_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +54,7 @@
     "RunOnceActivity.go.formatter.settings.were.checked": "true",
     "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "feature",
+    "git-widget-placeholder": "#1 on feature",
     "go.sdk.automatically.set": "true",
     "last_opened_file_path": "/Users/shanmugabavan.shanmugakumar.c",
     "nodejs_package_manager_path": "npm"

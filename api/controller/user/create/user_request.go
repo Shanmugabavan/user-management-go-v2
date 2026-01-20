@@ -1,10 +1,10 @@
-package create
+package dtos
 
 import (
 	"user-management/enum/user"
 )
 
-type UserRequest struct {
+type CreateUserRequest struct {
 	FirstName string          `json:"firstName" validate:"required,min=2,max=50"`
 	LastName  string          `json:"lastName" validate:"required,min=2,max=50"`
 	Email     string          `json:"email" validate:"required,email"`
