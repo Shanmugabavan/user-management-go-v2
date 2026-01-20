@@ -30,7 +30,7 @@ func SetupTestDatabase() (testcontainers.Container, *pgxpool.Pool, error) {
 		WaitingFor: wait.ForAll(
 			wait.ForListeningPort("5432/tcp"),
 			wait.ForLog("database system is ready to accept connections"),
-		).WithStartupTimeout(60 * time.Second),
+		).WithDeadline(60 * time.Second),
 	}
 
 	dbContainer, err := testcontainers.GenericContainer(
@@ -57,7 +57,10 @@ func SetupTestDatabase() (testcontainers.Container, *pgxpool.Pool, error) {
 	}
 
 	connectionString := fmt.Sprintf("postgres://postgres:25621@%v:%v/test_db", host, port.Port())
-	err = MigrateDb(connectionString)
+	migrationErr := MigrateDb(connectionString)
+	if migrationErr != nil {
+		return nil, nil, migrationErr
+	}
 
 	connectionPool, err := pgxpool.New(ctx, connectionString)
 
@@ -83,7 +86,12 @@ func MigrateDb(connectionString string) (err error) {
 
 	err = m.Up()
 
-	defer m.Close()
+	defer func(m *migrate.Migrate) {
+		err, _ := m.Close()
+		if err != nil {
+			panic(err)
+		}
+	}(m)
 
 	if err != nil {
 		return err

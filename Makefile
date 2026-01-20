@@ -5,7 +5,7 @@ BINARY_PATH := ./bin/$(APP_NAME)
 DOCKER_COMPOSE := ./docker-compose.yml
 
 #default
-all:lint test build
+all:lint test docker-up
 
 build:
 	@echo "Building Library"

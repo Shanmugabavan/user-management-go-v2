@@ -59,5 +59,8 @@ func migrateData(connectionString string) {
 		fmt.Println(err)
 	}
 
-	db.Close()
+	_, _ = db.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
 }

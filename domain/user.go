@@ -2,6 +2,7 @@ package domain
 
 import (
 	"context"
+	"user-management/enum/user"
 	"user-management/internal/db"
 
 	"github.com/google/uuid"
@@ -14,16 +15,8 @@ type User struct {
 	Email     string
 	Phone     string
 	Age       int
-	Status    UserStatus
+	Status    user.UserStatus
 }
-
-type UserStatus int
-
-const (
-	UserStatusDefault UserStatus = iota
-	UserStatusActive
-	UserStatusInactive
-)
 
 type UserRepository interface {
 	Create(ctx context.Context, user *User) (db.CreateUserRow, error)

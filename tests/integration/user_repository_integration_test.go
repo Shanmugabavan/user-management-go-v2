@@ -4,6 +4,7 @@ import (
 	"context"
 	"testing"
 	"user-management/domain"
+	"user-management/enum/user"
 	"user-management/repository"
 
 	"github.com/google/uuid"
@@ -24,7 +25,7 @@ func TestUserRespository(t *testing.T) {
 		Email:     "abc@gmail.com",
 		Phone:     "1234567890",
 		Age:       25,
-		Status:    domain.UserStatusActive,
+		Status:    user.UserStatusActive,
 		UserId:    uuid.New(),
 	}
 
@@ -63,7 +64,7 @@ func TestUserRespository(t *testing.T) {
 	})
 
 	t.Run("UpdateUser", func(t *testing.T) {
-		userRepository.Create(context.Background(), &newUser)
+		_, _ = userRepository.Create(context.Background(), &newUser)
 
 		updatedUserRequest := domain.User{
 			FirstName: "UpdatedFirstName",
@@ -71,7 +72,7 @@ func TestUserRespository(t *testing.T) {
 			Email:     "updatedEmail@email.com",
 			Phone:     "updatedPhone",
 			Age:       26,
-			Status:    domain.UserStatusInactive,
+			Status:    user.UserStatusInactive,
 			UserId:    newUser.UserId,
 		}
 		updatedUserRow, _ := userRepository.Update(context.Background(), newUser.UserId, &updatedUserRequest)

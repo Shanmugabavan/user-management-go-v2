@@ -55,8 +55,7 @@ func (m *mockRepo) Delete(c context.Context, id uuid.UUID) (uuid.UUID, error) {
 
 func TestCreateUserWithValidData(t *testing.T) {
 	mockUserController := user.UserController{
-		&mockRepo{},
-		nil,
+		UserRepository: &mockRepo{},
 	}
 
 	createRequest := create.UserRequest{
@@ -88,8 +87,7 @@ func TestCreateUserWithValidData(t *testing.T) {
 
 func TestCreateUserWithInValidJsonData(t *testing.T) {
 	mockUserController := user.UserController{
-		&mockRepo{},
-		nil,
+		UserRepository: &mockRepo{},
 	}
 
 	createRequest := create.UserRequest{
@@ -113,8 +111,7 @@ func TestCreateUserWithInValidJsonData(t *testing.T) {
 
 func TestGetAllUsers(t *testing.T) {
 	mockUserController := user.UserController{
-		&mockRepo{},
-		nil,
+		UserRepository: &mockRepo{},
 	}
 
 	request, _ := http.NewRequest(http.MethodPost, "", nil)
@@ -133,8 +130,7 @@ func TestGetAllUsers(t *testing.T) {
 
 func TestGetUserById(t *testing.T) {
 	mockUserController := user.UserController{
-		&mockRepo{},
-		nil,
+		UserRepository: &mockRepo{},
 	}
 
 	r := chi.NewRouter()
@@ -158,8 +154,7 @@ func TestGetUserById(t *testing.T) {
 
 func TestUpdateUser(t *testing.T) {
 	mockUserController := user.UserController{
-		&mockRepo{},
-		nil,
+		UserRepository: &mockRepo{},
 	}
 
 	updateRequest := update.UserRequest{
@@ -186,8 +181,7 @@ func TestUpdateUser(t *testing.T) {
 
 func TestUpdateUserWithInvalidEmail(t *testing.T) {
 	mockUserController := user.UserController{
-		&mockRepo{},
-		nil,
+		UserRepository: &mockRepo{},
 	}
 
 	updateRequest := update.UserRequest{

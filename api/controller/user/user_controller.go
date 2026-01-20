@@ -8,6 +8,7 @@ import (
 	"user-management/api/responses"
 	"user-management/bootstrap"
 	"user-management/domain"
+	"user-management/enum/user"
 	"user-management/internal/validator"
 
 	"github.com/go-chi/chi/v5"
@@ -46,15 +47,19 @@ func (u *UserController) CreateUser(w http.ResponseWriter, r *http.Request) {
 	valError := validator.Validate.Struct(createUserRequest)
 	if valError != nil {
 		w.WriteHeader(http.StatusBadRequest)
-		json.NewEncoder(w).Encode(responses.Response{
+		err := json.NewEncoder(w).Encode(responses.Response{
 			Message: "validation failed",
 			Errors:  valError.Error(),
 		})
+
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+		}
 		return
 	}
 
-	if createUserRequest.Status == domain.UserStatusDefault {
-		createUserRequest.Status = domain.UserStatusActive
+	if createUserRequest.Status == user.UserStatusDefault {
+		createUserRequest.Status = user.UserStatusActive
 	}
 
 	user := domain.User{
@@ -76,10 +81,14 @@ func (u *UserController) CreateUser(w http.ResponseWriter, r *http.Request) {
 	}
 	if err2 != nil {
 		w.WriteHeader(http.StatusInternalServerError)
-		json.NewEncoder(w).Encode(responses.Response{
+		err := json.NewEncoder(w).Encode(responses.Response{
 			Message: "Internal Server Error",
 			Errors:  err2.Error(),
 		})
+
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+		}
 		return
 	}
 
@@ -209,20 +218,28 @@ func (u *UserController) UpdateUser(w http.ResponseWriter, r *http.Request) {
 
 	if errId != nil {
 		w.WriteHeader(http.StatusBadRequest)
-		json.NewEncoder(w).Encode(responses.Response{
+		err := json.NewEncoder(w).Encode(responses.Response{
 			Message: "user not found",
 			Errors:  errId.Error(),
 		})
+
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+		}
 		return
 	}
 
 	err := json.NewDecoder(r.Body).Decode(&updateUserRequest)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
-		json.NewEncoder(w).Encode(responses.Response{
+		err := json.NewEncoder(w).Encode(responses.Response{
 			Message: "Json Conversion Issue",
 			Errors:  err.Error(),
 		})
+
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+		}
 		return
 	}
 
@@ -230,10 +247,13 @@ func (u *UserController) UpdateUser(w http.ResponseWriter, r *http.Request) {
 	if valError != nil {
 		http.Error(w, valError.Error(), http.StatusBadRequest)
 		w.WriteHeader(http.StatusBadRequest)
-		json.NewEncoder(w).Encode(responses.Response{
+		err := json.NewEncoder(w).Encode(responses.Response{
 			Message: "validation failed",
 			Errors:  valError.Error(),
 		})
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+		}
 		return
 	}
 
@@ -243,7 +263,7 @@ func (u *UserController) UpdateUser(w http.ResponseWriter, r *http.Request) {
 		Email:     updateUserRequest.Email,
 		Phone:     updateUserRequest.Phone,
 		Age:       updateUserRequest.Age,
-		Status:    domain.UserStatus(updateUserRequest.Status),
+		Status:    user.UserStatus(updateUserRequest.Status),
 	}
 
 	updatedUser, err2 := u.Update(r.Context(), userID, &user)
@@ -255,10 +275,13 @@ func (u *UserController) UpdateUser(w http.ResponseWriter, r *http.Request) {
 	}
 	if err2 != nil {
 		w.WriteHeader(http.StatusNotFound)
-		json.NewEncoder(w).Encode(responses.Response{
+		err := json.NewEncoder(w).Encode(responses.Response{
 			Message: "user not found",
 			Errors:  err2.Error(),
 		})
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+		}
 		return
 	}
 
@@ -287,10 +310,13 @@ func (u *UserController) DeleteUser(w http.ResponseWriter, r *http.Request) {
 
 	if errId != nil {
 		w.WriteHeader(http.StatusNotFound)
-		json.NewEncoder(w).Encode(responses.Response{
+		err := json.NewEncoder(w).Encode(responses.Response{
 			Message: "Invalid user id",
 			Errors:  errId.Error(),
 		})
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+		}
 		return
 	}
 
@@ -298,10 +324,14 @@ func (u *UserController) DeleteUser(w http.ResponseWriter, r *http.Request) {
 
 	if err2 != nil {
 		w.WriteHeader(http.StatusNotFound)
-		json.NewEncoder(w).Encode(responses.Response{
+		err := json.NewEncoder(w).Encode(responses.Response{
 			Message: "user not found",
 			Errors:  err2.Error(),
 		})
+
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+		}
 		return
 	}
 

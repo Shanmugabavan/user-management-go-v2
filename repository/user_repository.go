@@ -3,6 +3,7 @@ package repository
 import (
 	"context"
 	"user-management/domain"
+	"user-management/enum/user"
 	"user-management/internal/db"
 
 	"github.com/google/uuid"
@@ -59,7 +60,7 @@ func (ur *UserRepository) GetAll(c context.Context) ([]domain.User, error) {
 			Email:     u.Email,
 			Phone:     u.Phone,
 			Age:       int(u.Age),
-			Status:    domain.UserStatus(u.Status),
+			Status:    user.UserStatus(u.Status),
 		})
 	}
 
@@ -80,7 +81,7 @@ func (ur *UserRepository) GetById(c context.Context, id uuid.UUID) (domain.User,
 		Email:     dbUser.Email,
 		Phone:     dbUser.Phone,
 		Age:       int(dbUser.Age),
-		Status:    domain.UserStatus(dbUser.Status),
+		Status:    user.UserStatus(dbUser.Status),
 	}
 
 	return user, nil
