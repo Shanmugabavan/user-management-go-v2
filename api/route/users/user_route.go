@@ -11,10 +11,7 @@ import (
 
 func UserRouter(env *bootstrap.Env, connectionPool *pgxpool.Pool, router *chi.Mux) {
 	ur := repository.NewUserRepository(connectionPool)
-	uc := &user.UserController{
-		UserRepository: ur,
-		Env:            env,
-	}
+	uc := user.NewUserController(ur, env)
 
 	router.Post("/users", uc.CreateUser)
 	router.Get("/users", uc.GetAllUsers)

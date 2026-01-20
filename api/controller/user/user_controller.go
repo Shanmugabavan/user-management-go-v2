@@ -19,6 +19,13 @@ type UserController struct {
 	Env *bootstrap.Env
 }
 
+func NewUserController(ur domain.UserRepository, env *bootstrap.Env) *UserController {
+	return &UserController{
+		UserRepository: ur,
+		Env:            env,
+	}
+}
+
 // CreateUser godoc
 // @Summary Create user
 // @Description Create a new user
