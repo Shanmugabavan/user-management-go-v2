@@ -3,6 +3,10 @@ package user
 import (
 	"encoding/json"
 	"net/http"
+
+	"github.com/go-chi/chi/v5"
+	"github.com/google/uuid"
+
 	"user-management/api/controller/user/create"
 	"user-management/api/controller/user/update"
 	"user-management/api/responses"
@@ -10,9 +14,6 @@ import (
 	"user-management/domain"
 	"user-management/enum/user"
 	"user-management/internal/validator"
-
-	"github.com/go-chi/chi/v5"
-	"github.com/google/uuid"
 )
 
 type UserController struct {

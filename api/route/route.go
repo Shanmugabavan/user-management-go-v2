@@ -1,11 +1,11 @@
 package route
 
 import (
-	"user-management/api/route/users"
-	"user-management/bootstrap"
-
 	"github.com/go-chi/chi/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
+
+	"user-management/api/route/users"
+	"user-management/bootstrap"
 )
 
 func Setup(env *bootstrap.Env, connectionPool *pgxpool.Pool, router *chi.Mux) {

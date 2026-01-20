@@ -2,13 +2,14 @@ package repository
 
 import (
 	"context"
-	"user-management/domain"
-	"user-management/enum/user"
-	"user-management/internal/db"
 
 	"github.com/google/uuid"
 	"github.com/jackc/pgx/v5/pgtype"
 	"github.com/jackc/pgx/v5/pgxpool"
+
+	"user-management/domain"
+	"user-management/enum/user"
+	"user-management/internal/db"
 )
 
 type UserRepository struct {

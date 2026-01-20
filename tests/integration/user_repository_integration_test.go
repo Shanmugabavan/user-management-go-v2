@@ -3,12 +3,13 @@ package integration
 import (
 	"context"
 	"testing"
-	"user-management/domain"
-	"user-management/enum/user"
-	"user-management/repository"
 
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
+
+	"user-management/domain"
+	"user-management/enum/user"
+	"user-management/repository"
 )
 
 func TestUserRespository(t *testing.T) {

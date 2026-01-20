@@ -1,12 +1,12 @@
 package users
 
 import (
+	"github.com/go-chi/chi/v5"
+	"github.com/jackc/pgx/v5/pgxpool"
+
 	"user-management/api/controller/user"
 	"user-management/bootstrap"
 	"user-management/repository"
-
-	"github.com/go-chi/chi/v5"
-	"github.com/jackc/pgx/v5/pgxpool"
 )
 
 func UserRouter(env *bootstrap.Env, connectionPool *pgxpool.Pool, router *chi.Mux) {

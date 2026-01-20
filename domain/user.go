@@ -2,10 +2,11 @@ package domain
 
 import (
 	"context"
-	"user-management/enum/user"
-	"user-management/internal/db"
 
 	"github.com/google/uuid"
+
+	"user-management/enum/user"
+	"user-management/internal/db"
 )
 
 type User struct {

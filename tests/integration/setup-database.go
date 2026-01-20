@@ -6,15 +6,16 @@ import (
 	"strings"
 	"time"
 
-	"user-management/migrations"
-
 	"github.com/golang-migrate/migrate/v4"
-	_ "github.com/golang-migrate/migrate/v4/database/pgx/v5"
 	"github.com/golang-migrate/migrate/v4/source/iofs"
 	"github.com/jackc/pgx/v5/pgxpool"
-	_ "github.com/jackc/pgx/v5/stdlib"
 	"github.com/testcontainers/testcontainers-go"
 	"github.com/testcontainers/testcontainers-go/wait"
+
+	_ "github.com/golang-migrate/migrate/v4/database/pgx/v5"
+	_ "github.com/jackc/pgx/v5/stdlib"
+
+	"user-management/migrations"
 )
 
 func SetupTestDatabase() (testcontainers.Container, *pgxpool.Pool, error) {

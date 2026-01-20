@@ -1,9 +1,9 @@
 package get
 
 import (
-	"user-management/enum/user"
-
 	"github.com/google/uuid"
+
+	"user-management/enum/user"
 )
 
 type UserResponseDto struct {

@@ -7,6 +7,11 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/go-chi/chi/v5"
+	"github.com/google/uuid"
+	"github.com/stretchr/testify/assert"
+
 	"user-management/api/controller/user"
 	"user-management/api/controller/user/create"
 	"user-management/api/controller/user/update"
@@ -15,10 +20,6 @@ import (
 	"user-management/internal/db"
 	"user-management/internal/validator"
 	"user-management/repository"
-
-	"github.com/go-chi/chi/v5"
-	"github.com/google/uuid"
-	"github.com/stretchr/testify/assert"
 )
 
 type mockRepo struct {
