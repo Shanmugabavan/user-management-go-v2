@@ -14,6 +14,9 @@ linters:
 formatters:
   enable:
     - gci
+    - gofmt
+    - goimports
+    - golines
   settings:
     gci:
       # Section configuration to compare against.
@@ -42,4 +45,44 @@ formatters:
       # Drops lexical ordering for custom sections.
       # Default: false
       no-lex-order: true
+    gofmt:
+      # Simplify code: gofmt with `-s` option.
+      # Default: true
+      simplify: false
+      # Apply the rewrite rules to the source before reformatting.
+      # https://pkg.go.dev/cmd/gofmt
+      # Default: []
+      rewrite-rules:
+        - pattern: 'interface{}'
+          replacement: 'any'
+        - pattern: 'a[b:len(a)]'
+          replacement: 'a[b:]'
+    gofumpt:
+      # Module path which contains the source code being formatted.
+      # Default: ""
+      module-path: github.com/org/project
+      # Choose whether to use the extra rules.
+      # Default: false
+      extra-rules: true
+    goimports:
+      # A list of prefixes, which, if set, checks import paths
+      # with the given prefixes are grouped after 3rd-party packages.
+      # Default: []
+      local-prefixes:
+        - github.com/org/project
+    golines:
+      # Target maximum line length.
+      # Default: 100
+      max-len: 200
+      # Length of a tabulation.
+      # Default: 4
+      tab-len: 8
+      # Shorten single-line comments.
+      # Default: false
+      shorten-comments: true
+      # Default: true
+      reformat-tags: false
+      # Split chained methods on the dots as opposed to the arguments.
+      # Default: true
+      chain-split-dots: false
 

@@ -46,7 +46,6 @@ func (ur *UserRepository) Create(c context.Context, user *domain.User) (db.Creat
 
 func (ur *UserRepository) GetAll(c context.Context) ([]domain.User, error) {
 	dbUsers, err := ur.queries.GetAllUsers(c)
-
 	if err != nil {
 		return nil, err
 	}
@@ -70,7 +69,6 @@ func (ur *UserRepository) GetAll(c context.Context) ([]domain.User, error) {
 
 func (ur *UserRepository) GetById(c context.Context, id uuid.UUID) (domain.User, error) {
 	dbUser, err := ur.queries.GetUser(c, ToPgUUID(id))
-
 	if err != nil {
 		return domain.User{}, err
 	}
@@ -118,7 +116,6 @@ func (ur *UserRepository) Update(c context.Context, id uuid.UUID, user *domain.U
 
 func (ur *UserRepository) Delete(c context.Context, id uuid.UUID) (uuid.UUID, error) {
 	deletedUserId, err := ur.queries.DeleteUser(c, ToPgUUID(id))
-
 	if err != nil {
 		return uuid.New(), err
 	}
@@ -140,7 +137,7 @@ func ToUUIDFromPgUUID(id pgtype.UUID) uuid.UUID {
 	return id.Bytes
 }
 
-func updateDbEntity(retrieved *domain.User, current *domain.User) {
+func updateDbEntity(retrieved, current *domain.User) {
 	if current.FirstName != "" {
 		retrieved.FirstName = current.FirstName
 	}

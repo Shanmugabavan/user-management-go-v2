@@ -52,7 +52,6 @@ func (u *UserController) CreateUser(w http.ResponseWriter, r *http.Request) {
 			Message: "validation failed",
 			Errors:  valError.Error(),
 		})
-
 		if err != nil {
 			w.WriteHeader(http.StatusBadRequest)
 		}
@@ -86,7 +85,6 @@ func (u *UserController) CreateUser(w http.ResponseWriter, r *http.Request) {
 			Message: "Internal Server Error",
 			Errors:  err2.Error(),
 		})
-
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
 		}
@@ -223,7 +221,6 @@ func (u *UserController) UpdateUser(w http.ResponseWriter, r *http.Request) {
 			Message: "user not found",
 			Errors:  errId.Error(),
 		})
-
 		if err != nil {
 			w.WriteHeader(http.StatusBadRequest)
 		}
@@ -237,7 +234,6 @@ func (u *UserController) UpdateUser(w http.ResponseWriter, r *http.Request) {
 			Message: "Json Conversion Issue",
 			Errors:  err.Error(),
 		})
-
 		if err != nil {
 			w.WriteHeader(http.StatusBadRequest)
 		}
@@ -329,7 +325,6 @@ func (u *UserController) DeleteUser(w http.ResponseWriter, r *http.Request) {
 			Message: "user not found",
 			Errors:  err2.Error(),
 		})
-
 		if err != nil {
 			w.WriteHeader(http.StatusBadRequest)
 		}

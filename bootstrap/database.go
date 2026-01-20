@@ -52,7 +52,6 @@ func CloseConnectionPool(db *pool.Pool) {
 
 func migrateData(connectionString string) {
 	db, err := migrate.New("file://./migrations", connectionString)
-
 	if err != nil {
 		log.Fatal(err)
 	}

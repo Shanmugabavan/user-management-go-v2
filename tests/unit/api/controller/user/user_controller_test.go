@@ -22,8 +22,7 @@ import (
 	"user-management/repository"
 )
 
-type mockRepo struct {
-}
+type mockRepo struct{}
 
 func (m *mockRepo) Create(ctx context.Context, user *domain.User) (db.CreateUserRow, error) {
 	return db.CreateUserRow{
@@ -177,7 +176,6 @@ func TestUpdateUser(t *testing.T) {
 	r.ServeHTTP(rr, request)
 
 	assert.Equal(t, http.StatusOK, rr.Code)
-
 }
 
 func TestUpdateUserWithInvalidEmail(t *testing.T) {

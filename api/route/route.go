@@ -9,7 +9,6 @@ import (
 )
 
 func Setup(env *bootstrap.Env, connectionPool *pgxpool.Pool, router *chi.Mux) {
-
 	// Public APIs
 	router.Group(func(r chi.Router) {
 		users.UserRouter(env, connectionPool, router)

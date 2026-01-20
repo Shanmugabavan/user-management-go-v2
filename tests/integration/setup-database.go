@@ -40,19 +40,16 @@ func SetupTestDatabase() (testcontainers.Container, *pgxpool.Pool, error) {
 			ContainerRequest: containerReq,
 			Started:          true,
 		})
-
 	if err != nil {
 		return nil, nil, err
 	}
 
 	port, err := dbContainer.MappedPort(ctx, "5432")
-
 	if err != nil {
 		return nil, nil, err
 	}
 
 	host, err := dbContainer.Host(ctx)
-
 	if err != nil {
 		return nil, nil, err
 	}
@@ -64,13 +61,11 @@ func SetupTestDatabase() (testcontainers.Container, *pgxpool.Pool, error) {
 	}
 
 	connectionPool, err := pgxpool.New(ctx, connectionString)
-
 	if err != nil {
 		return nil, nil, err
 	}
 
 	return dbContainer, connectionPool, err
-
 }
 
 func MigrateDb(connectionString string) (err error) {
@@ -80,7 +75,6 @@ func MigrateDb(connectionString string) (err error) {
 	}
 
 	m, err := migrate.NewWithSourceInstance("iofs", source, strings.Replace(connectionString, "postgres://", "pgx5://", 1))
-
 	if err != nil {
 		return err
 	}

@@ -35,7 +35,6 @@ func main() {
 
 	route.Setup(app.Env, app.ConnectionPool, r)
 	err := http.ListenAndServe(":8080", r)
-
 	if err != nil {
 		panic(err)
 	}
