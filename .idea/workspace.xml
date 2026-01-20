@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dc2805f5-af17-459b-b904-e363cd5b5c2b" name="Changes" comment="gci lint fix">
+      <change beforePath="$PROJECT_DIR$/api/controller/user/create/user_request.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/controller/user/create/user_request.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controller/user/create/user_response.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/controller/user/create/user_response.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controller/user/get/user_response_dto.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/controller/user/get/user_response_dto.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controller/user/user_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/controller/user/user_controller.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/api/controller/user/user_controller_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/api/controller/user/user_controller_test.go" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" url="file:///usr/local/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GoLinterSelectedExecutable" path="/opt/homebrew/bin/golangci-lint" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="38Ve15lUk9znUdjJDjESxBcMh56" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultGoTemplateProperty": "Go File",
+    "Makefile Target.all.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.GoLinterPluginOnboardingV2": "true",
+    "RunOnceActivity.GoLinterPluginStorageMigration": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "#1 on feature",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "/Users/shanmugabavan.shanmugakumar.c",
+    "nodejs_package_manager_path": "npm"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="all" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="all" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Makefile Target.all" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-gosdk-72a9cf600ed8-dfa3e7267ae0-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-253.29346.379" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-GO-253.29346.379" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dc2805f5-af17-459b-b904-e363cd5b5c2b" name="Changes" comment="" />
+      <created>1768888946229</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1768888946229</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="stash" />
+    <MESSAGE value=".idea" />
+    <MESSAGE value="user status enum created" />
+    <MESSAGE value="gci lint fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="gci lint fix" />
+  </component>
+</project>
